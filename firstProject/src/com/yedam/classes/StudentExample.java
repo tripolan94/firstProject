@@ -18,7 +18,8 @@ public class StudentExample {
 		System.out.println("전공은 " + s2.getMajor());
 		Student s3 = new Student(333, "최재영", "역사");
 		Student s4 = new Student(444, "민해주", "말타기");
-
+	
+		
 		String searchName = "홍길동";
 		String searchMajor = "역사";
 		

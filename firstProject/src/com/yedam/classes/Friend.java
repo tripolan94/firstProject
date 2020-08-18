@@ -1,52 +1,48 @@
 package com.yedam.classes;
 
 public class Friend {
-	private static final Friend[] Friend = null;
+//필드
 	private String name;
-	private int age;
-	private int number;
+	private String major;
+	private String phone; //int가 아니라 스트링으로 010-7415 처럼 -가 들어감
 	
+//생성자 
 	public Friend() {	
 	}
-	
-	public Friend(String name, int age, int number) {
+	public Friend(String name, String major, String number) {
 		this.name = name;
-		this.age = age;
-		this.number = number;
-		Friend[1]  = new Friend(name, age, number);
-
-		for(int i=0; i<5; i++){
-		}
-
+		this.major = major;
+		this.phone = phone;
 	}
 	
-	public void getArea(String name, int age, int number) {
-		System.out.println(name + age + number);
-	}
-	
-	
-	
-	
+
+//메소드
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setMajor(String major) {
+		this.major = major;
 	}
-	public int getAge() {
-		return age;
+	public String getMajor() {
+		return major;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public int getNumber() {
-		return number;
+	public String getPhone() {
+		return phone;
+		
+	
+		
 	}
 	
-	
-	
-	
+	@Override
+	public String toString() {
+		return 
+		"일반친구 이름 : " + this.getName() 
+        + ", 연락처 : " + this.getPhone();
+	}
 }
