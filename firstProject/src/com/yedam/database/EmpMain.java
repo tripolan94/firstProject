@@ -6,6 +6,7 @@ public class EmpMain {
 	public static void main(String[] args) {
 		boolean run = true;
 		Scanner scn = new Scanner(System.in);
+		EmpService service = new EmpServiceImp1();
 		while (run) {
 			System.out.println("---------------------------");
 			System.out.println("1.리스트 2.입력 3.수정 4.삭제 9.종료");
@@ -13,8 +14,8 @@ public class EmpMain {
 			System.out.print("선택 > ");
 			int selectNo = scn.nextInt();
 			if(selectNo == 1) {
-				EmpDAO dao = new EmpDAO();
-				Employee[] emps = dao.getEmpList();
+//				EmpDAO dao = new EmpDAO();
+				Employee[] emps = service.showList();
 				for (Employee emp : emps) {
 					if (emp != null) {
 						System.out.println(emp.toString());
@@ -37,31 +38,33 @@ public class EmpMain {
 				System.out.println("일아이디 입력 >");
 				String empJobId = scn.nextLine();
 				
-				EmpDAO dao = new EmpDAO();
+//				EmpDAO dao = new EmpDAO();
 				Employee emp = new Employee(empID, empName, empEmail, empHireDate, empJobId);
-				dao.addEmployee(emp);
+				service.addEmp(emp);  //dao.addEmployee(emp);
 				
 			} else if (selectNo == 3) {
-				EmpDAO dao = new EmpDAO();
-				Employee emp = new Employee();
+//				EmpDAO dao = new EmpDAO();
+//				Employee emp = new Employee();
 				
 				System.out.println("사원번호 입력 >");
-				int empID = scn.nextInt(); scn.nextLine(); 
-				emp.setEmployeeId(empID);
+				int eId = scn.nextInt(); scn.nextLine(); 
 				
 				System.out.println("수정할 월급내용 >");
 				int salary = scn.nextInt();
-				emp.setSalary(salary);			
-				
-				dao.updateEmp(emp);
+				Employee emp = new Employee();
+				emp.setSalary(salary);	
+				emp.setEmployeeId(eId);			
+				service.modEmp(emp);
+//				dao.updateEmp(emp);
 				
 			} else if (selectNo == 4) {
 				System.out.print("삭제할 사원번호 입력 > ");
 				int delId = scn.nextInt();
-				EmpDAO dao = new EmpDAO();
-				Employee emp = new Employee();
-				emp.setEmployeeId(delId);
-				dao.removeEmp(emp);
+//				EmpDAO dao = new EmpDAO();
+//				Employee emp = new Employee();
+//				emp.setEmployeeId(delId);
+				service.delEmp(delId);
+//				dao.removeEmp(emp);
 				
 				
 			} else if (selectNo == 9) {
